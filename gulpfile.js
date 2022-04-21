@@ -5,7 +5,7 @@
         rename  = require('gulp-rename'),
         flatten = require('gulp-flatten'),
         jshint  = require('gulp-jshint'),
-        karma   = require('gulp-karma'),
+        karma   = require('karma'),
         uglify  = require('gulp-uglify');
 
     var files   = ['module/Pather.js', 'module/components/*.js'];
@@ -47,9 +47,9 @@
 
     });
 
-    gulp.task('test', ['lint', 'karma']);
-    gulp.task('build', ['compile']);
-    gulp.task('default', ['test', 'build']);
+    gulp.task('test', gulp.series('lint', 'karma'));
+    gulp.task('build', gulp.series('compile'));
+    gulp.task('default', gulp.series('test', 'build'));
     gulp.task('watch', function watch() {
         gulp.watch(files, ['build']);
     });
