@@ -261,7 +261,7 @@
                 var lineFunction = d3.line()
                     .x(function x(d) { return d.x; })
                     .y(function y(d) { return d.y; })
-                    .interpolate('linear');
+                    .curve('linear');
 
                 if (this.creating) {
 
